@@ -53,7 +53,7 @@ class SpotlightJS {
     let spSpot = document.createElement("div");
     spSpot.id = "spjs-spot";
     spSpot.classList.add("spjs-" + this.shape);
-    spSpot.style.color = this.
+    spSpot.style.color = this.color;
     let spText = document.createElement("div");
     spText.id = "spjs-text";
     let spTextContent = document.createElement("span");
@@ -118,8 +118,8 @@ class SpotlightJS {
           let elRect = el.getBoundingClientRect();
           this.spot.style.width = (elRect.width + 20) + "px";
           this.spot.style.height = (elRect.height + 20) + "px";
-          this.spot.style.top = (elRect.top - 10) + "px";
-          this.spot.style.left = (elRect.left - 10) + "px";
+          this.spot.style.top = (elRect.top + elRect.height/2) + "px";
+          this.spot.style.left = (elRect.left + elRect.width/2) + "px";
           this.spot.classList.add("spjs-step-" + step); // to allow user styling specific to each step
           this.textContent.textContent = el.dataset.spText;
           if (this.previousButton)

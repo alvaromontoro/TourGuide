@@ -14,9 +14,11 @@ Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlig
   #spjs-spot {
     position: absolute;
     border-radius: 99%;
-    box-shadow: inset 0 0 8px 0, 0 0 0 200vmax;
+    box-shadow: inset 0 0 8px 0;
+    border: 200vmax solid;
     color: rgba(0,0,0,0.5);
     transition: all 0.5s;
+    transform: translate(-50%, -50%);
     &.spjs-square,
     &.spjs-step-square {
       border-radius: 5px;
