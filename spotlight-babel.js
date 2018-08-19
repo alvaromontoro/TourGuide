@@ -17,6 +17,7 @@ class SpotlightJS {
     this.timer = 0;
     this.current = 0;
     this.steps = [];
+    this.initTrigger = false;
     this.frame = null;
     this.spot = null;
     this.text = null;
@@ -31,6 +32,7 @@ class SpotlightJS {
       if (options.hasOwnProperty("skip")) { this.skip = (options.skip == true); }
       if (options.hasOwnProperty("previous")) { this.previous = (options.previous == true); }
       if (options.hasOwnProperty("next")) { this.next = (options.next == true); }
+      if (options.hasOwnProperty("initTrigger")) { this.initTrigger = (options.initTrigger == true); }
       if (options.skipText) { this.skipText = options.skipText; }
       if (options.previousText) { this.previousText = options.previousText; }
       if (options.nextText) { this.nextText = options.nextText; }
@@ -47,7 +49,13 @@ class SpotlightJS {
       }
     }
 
-    // create the html structure needed for the spotlight (inline CSS, sorry)
+    // remove html structure if already existing
+    let oldSpInst = document.querySelector("#spjs-frame")
+    if (oldSpInst) {
+      document.querySelector("body").removeChild(oldSpInst);
+    }
+
+    // create the html structure needed for the spotlight
     let spInst = document.createElement("div");
     spInst.id = "spjs-frame";
     let spSpot = document.createElement("div");
@@ -92,6 +100,11 @@ class SpotlightJS {
     let $this = this;
     window.addEventListener("resize", function() { $this.goToStep($this.current); });
     window.addEventListener("scroll", function() { $this.goToStep($this.current); });
+
+    // make the plugin initialize automatically on click of first element
+    if (this.initTrigger) {
+      document.querySelector(this.init).addEventListener("click", this.start);
+    }
   }
 
   /** start with the first step of the instructions */
