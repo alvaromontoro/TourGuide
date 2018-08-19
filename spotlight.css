@@ -1,4 +1,4 @@
-/** 
+/**
 SpotlightJS: a highlighting/instructions plugin for JS.
 Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlightjs
 **/
@@ -15,7 +15,8 @@ Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlig
 #spjs-frame #spjs-spot {
   position: absolute;
   border-radius: 99%;
-  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), 0 0 0 200vmax rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 8px 0, 0 0 0 200vmax;
+  color: rgba(0, 0, 0, 0.5);
   transition: all 0.5s;
 }
 #spjs-frame #spjs-spot.spjs-square, #spjs-frame #spjs-spot.spjs-step-square {
