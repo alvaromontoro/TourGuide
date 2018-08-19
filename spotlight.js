@@ -32,8 +32,8 @@ var SpotlightJS = function SpotlightJS(options) {
           var elRect = el.getBoundingClientRect();
           _this.spot.style.width = elRect.width + 20 + "px";
           _this.spot.style.height = elRect.height + 20 + "px";
-          _this.spot.style.top = elRect.top - 10 + "px";
-          _this.spot.style.left = elRect.left - 10 + "px";
+          _this.spot.style.top = (elRect.top + elRect.height/2) + "px";
+          _this.spot.style.left = (elRect.left + elRect.width/2) + "px";
           _this.spot.classList.add("spjs-step-" + step); // to allow user styling specific to each step
           _this.textContent.textContent = el.dataset.spText;
           if (_this.previousButton) _this.previousButton.style.display = _this.current == 0 ? "none" : "inline-block";
