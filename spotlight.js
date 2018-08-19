@@ -108,6 +108,7 @@ var SpotlightJS = function SpotlightJS(options) {
   this.timer = 0;
   this.current = 0;
   this.steps = [];
+  this.initTrigger = false;
   this.frame = null;
   this.spot = null;
   this.text = null;
@@ -131,6 +132,9 @@ var SpotlightJS = function SpotlightJS(options) {
     }
     if (options.hasOwnProperty("next")) {
       this.next = options.next == true;
+    }
+    if (options.hasOwnProperty("initTrigger")) {
+      this.initTrigger = options.initTrigger == true;
     }
     if (options.skipText) {
       this.skipText = options.skipText;
@@ -156,6 +160,12 @@ var SpotlightJS = function SpotlightJS(options) {
       this.steps.push(el);
       el = document.querySelector(el).dataset.spNext;
     }
+  }
+
+  // remove html structure if already existing
+  var oldSpInst = document.querySelector("#spjs-frame");
+  if (oldSpInst) {
+    document.querySelector("body").removeChild(oldSpInst);
   }
 
   // create the html structure needed for the spotlight
@@ -207,4 +217,9 @@ var SpotlightJS = function SpotlightJS(options) {
   window.addEventListener("scroll", function () {
     $this.goToStep($this.current);
   });
+
+  // make the plugin initialize automatically on click
+  if (this.initTrigger) {
+    document.querySelector(this.init).addEventListener("click", this.start);
+  }
 };

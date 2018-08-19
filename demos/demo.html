@@ -25,11 +25,9 @@
 			var spotlight = new SpotlightJS({
 			  init: "#hello",
 			  shape: "square",
-			  skip: false
+			  skip: false,
+        initTrigger: true
 			});
-
-			// start presentation when clicking on #hello, it could be any other element
-			document.querySelector("#hello").addEventListener("click", spotlight.start);
 		</script>
 	</body>
 </html>
