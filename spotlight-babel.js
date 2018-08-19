@@ -1,4 +1,4 @@
-/** 
+/**
 SpotlightJS: a highlighting/instructions plugin for JS.
 Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlightjs
 **/
@@ -23,7 +23,7 @@ class SpotlightJS {
     this.textContent = null;
     this.previousButton = null;
     this.nextButton = null;
-    
+
     // extend the options that can be customized
     if (options) {
       if (options.init) { this.init = options.init; }
@@ -35,8 +35,9 @@ class SpotlightJS {
       if (options.previousText) { this.previousText = options.previousText; }
       if (options.nextText) { this.nextText = options.nextText; }
       if (options.steps) { this.steps = options.steps; }
+      if (options.color) { this.color = options.color; }
     }
-    
+
     // create a list of selectors for the elements to get the spotlight (if none exists yet)
     if (this.init != "" && !this.hasSteps()) {
       let el = this.init;
@@ -45,13 +46,14 @@ class SpotlightJS {
         el = document.querySelector(el).dataset.spNext;
       }
     }
-    
+
     // create the html structure needed for the spotlight (inline CSS, sorry)
     let spInst = document.createElement("div");
     spInst.id = "spjs-frame";
     let spSpot = document.createElement("div");
     spSpot.id = "spjs-spot";
     spSpot.classList.add("spjs-" + this.shape);
+    spSpot.style.color = this.
     let spText = document.createElement("div");
     spText.id = "spjs-text";
     let spTextContent = document.createElement("span");
@@ -85,7 +87,7 @@ class SpotlightJS {
     this.spot = spSpot;
     this.text = spText;
     this.textContent = spTextContent;
-    
+
     // if window is resized of scrolled, recalculate
     let $this = this;
     window.addEventListener("resize", function() { $this.goToStep($this.current); });
@@ -99,12 +101,12 @@ class SpotlightJS {
       this.goToFirstStep();
     }
   }
-  
+
   /** end the instructions: hide everything */
   stop = () => {
     this.frame.style.display = "none";
   }
-  
+
   /** go to the specified step in the instructions */
   goToStep = (step) => {
     if (this.hasSteps()) {
@@ -120,7 +122,7 @@ class SpotlightJS {
           this.spot.style.left = (elRect.left - 10) + "px";
           this.spot.classList.add("spjs-step-" + step); // to allow user styling specific to each step
           this.textContent.textContent = el.dataset.spText;
-          if (this.previousButton) 
+          if (this.previousButton)
             this.previousButton.style.display = this.current == 0 ? "none" : "inline-block";
           if (el.dataset.spShape)
             this.spot.classList.add("spjs-step-" + el.dataset.spShape);
@@ -128,12 +130,12 @@ class SpotlightJS {
       }
     }
   }
-  
+
   /** go to the first step of the instructions */
   goToFirstStep = () => {
     this.goToStep(0);
   }
-  
+
   /** go to the next step of the instructions */
   goToNextStep = () => {
     if (this.current == this.steps.length - 1) {
@@ -143,26 +145,26 @@ class SpotlightJS {
       this.goToStep(this.current + 1);
     }
   }
-  
+
   /** go to the next step of the instructions */
   goToPreviousStep = () => {
     if (this.current > 0) {
       this.goToStep(this.current - 1);
     }
   }
-  
+
   /** indicates if the instructions have any steps to show (as a whole) */
   hasSteps = () => (this.init != "" && this.steps.length > 0);
-  
+
   /** returns the identifier of the current element */
   currentElementSelector = () => this.steps[this.current];
-  
+
   /** returns the currently highlighted element */
   currentElement = () => document.querySelector(this.currentElementSelector());
-  
+
   /** returns the text of the currently highlighted element */
   getText = () => this.currentElement().dataset.spText;
-  
+
   /** returns the current step */
   getStep = () => this.current + 1;
 

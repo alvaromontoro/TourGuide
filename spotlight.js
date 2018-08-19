@@ -1,6 +1,6 @@
 "use strict";
 
-/** 
+/**
 SpotlightJS: a highlighting/instructions plugin for JS
 Developed by Alvaro Montoro (alvaromontoro@gmail.com)
 More info: https://github.com/alvaromontoro/spotlightjs
@@ -144,6 +144,9 @@ var SpotlightJS = function SpotlightJS(options) {
     if (options.steps) {
       this.steps = options.steps;
     }
+    if (options.color) {
+      this.color = options.color;
+    }
   }
 
   // create a list of selectors for the elements to get the spotlight (if none exists yet)
@@ -161,6 +164,7 @@ var SpotlightJS = function SpotlightJS(options) {
   var spSpot = document.createElement("div");
   spSpot.id = "spjs-spot";
   spSpot.classList.add("spjs-" + this.shape);
+  spSpot.style.color = this.color;
   var spText = document.createElement("div");
   spText.id = "spjs-text";
   var spTextContent = document.createElement("span");
