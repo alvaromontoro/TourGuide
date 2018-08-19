@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<title>SpotlightJS Demo</title>
+		<link rel="stylesheet" href="./spotlight.min.css" />
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro|Titillium+Web");
+			html, body { font-size: 16px; background: #66dd77; font-family: 'Titillium Web', Arial, Verdana, sans-serif; }
+			#hello { padding: 10px; display: inline-block; background: white; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); margin-top: 30px; margin-left: 30px; cursor: pointer; }
+			#step-2 { position: relative; top: 40px; left: 10%; width: 80%; padding: 10px; background: #369; color: white; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); }
+			#step-3 { border-radius: 100%; padding: 50px; width: 200px; position: absolute; top: 250px; left: 100px; background: #632; color: white; }
+			#bye { position: absolute; right: 100px; bottom: 40px; background: red; display: inline-block; background: aquamarine; padding: 10px; }
+		</style>
+	</head>
+	<body>
+
+		<div id="hello" data-sp-next="#step-2" data-sp-text="This is the first step.">Hello! Ready to start? Click here!</div>
+		<div id="step-2" data-sp-next="#step-3" data-sp-text="Just a few more steps...">This is a small plugin that allows the  easy creation of spotlights that could be useful for small presentations, demos, or instructions.</div>
+		<div id="step-3" data-sp-next="#bye" data-sp-text="Almost there..." data-sp-shape="round">It is customizable. User can select shapes, colors, messages to be displayed...</div>
+		<div id="bye" data-sp-text="You made it till the end!">Bye! This was the end of the presentation</div>
+
+		<script src="./spotlight.min.js"></script>
+		<script>
+			// initialize the plugin to start in element #hello, squared by default, and do not show the skip to end option
+			var spotlight = new SpotlightJS({
+			  init: "#hello",
+			  shape: "square",
+			  skip: false
+			});
+
+			// start presentation when clicking on #hello, it could be any other element
+			document.querySelector("#hello").addEventListener("click", spotlight.start);
+		</script>
+	</body>
+</html>
