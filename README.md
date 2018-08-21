@@ -1,6 +1,72 @@
 # SpotlightJS
-SpotlightJS is a JavaScript plugin that helps generate step-by-step instructions and demos in an easy way. It spotlights elements adding small commentary on them. [See a demo working on CodePen](https://codepen.io/alvaromontoro/full/bjQYLM/).
 
-It doesn't use clip paths but box-shadows (supported by more browsers) to create a spotlight area that will highlight a specific element, displaying some text (specified as a data-attribute), and jumping from one step to another using CSS transitions.
+## About
 
-It is highly customizable, works on desktop and mobile, and users can opt to use the default controls or create their own using the plugin API. Some options are still WIP, but the general functionality is there, and working fine.
+SpotlightJS is a JavaScript module that helps generate step-by-step instructions and demos in an easy way. It spotlights elements adding small commentary on them. [See a demo working on CodePen](https://codepen.io/alvaromontoro/full/bjQYLM/).
+
+It uses borders to create a spotlight area that will highlight a specific element, displaying commentary text, and animating from one step to another using CSS transitions. It is highly customizable, works on desktop and mobile, and users can opt to use the default controls or create their own using the plugin API.
+
+Initially, it was a CSS-only animation for a [Snake & Ladders](https://codepen.io/alvaromontoro/full/gjWPNW/) (a.k.a. as Chutes & Ladders) game. Then it was ported into JavaScript and this module was created.
+
+## How to use it
+
+This is a simple 4-step way to start SpotlightJS:
+
+1. Import the JS library and CSS file into your project
+
+       <link rel="stylesheet" href="/css/spotlight.css" />
+       <script src="/js/spotlight.js"></script>
+       
+2. Add `data-sp-next` data-attribute to the elements that you want to highlight as part of your instructions.
+
+   There are more data-attributes that can be added, but only the `data-sp-next` is essential to create the list of steps for the instructions.
+
+3. Initialize SpotlightJS with the selector of the initial element of the instructions:
+
+       <script>
+       let spotlight = new SpotlightJS({
+         init: "#step1"
+       });
+       </script>
+
+4. With JavaScript, trigger the beginning of the instructions/demo using the `start` method:
+
+       spotlight.start();
+       
+For more examples on how to start, check the repository demos.
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| color | Color | String with the color of the shadow. Default: "rgba(0, 0, 0, 0.5)". |
+| init | String | Selector of the first element that will be highlighted, and from which the list of steps will be created. This field has no default value. **Either this parameter of `steps` must be specified when starting SpotlightJS.** |
+| initTrigger | Boolean | Indicates if the first element will also be the trigger of the animation. Default: false. |
+| next | Boolean | Indicates if the link to the next step will be displayed. Default: true |
+| nextText | String | Specifies the text of the next step link. Admits HTML. Default: "Next" |
+| previous | Boolean | Indicates if the link to the previous step will be displayed. Default: true |
+| previousText | String | Specifies the text of the previous step link. Admits HTML. Default: "Previous" |
+| shape | square\|round | String that indicates the shape of the spotlight: squared or round/elliptical. Default value: "round". |
+| skip | Boolean | Indicates if the link to skip the instructions will be displayed. Default: true |
+| skipText | String | Specifies the text of the link to skip instructions. Default: "Skip presentation" |
+| steps | Array | List with the selectors of the elements to be highlighted as part of the instructions. This field has no default value. **Either this parameter of `init` must be specified when starting SpotlightJS.** |
+
+## API methods
+
+In order to customize the instructions, you could hide all the controls (next, previous, skip) and use your own using the methods from the provided API, or you could also hide the text associated to each step (via CSS) and design your own instruction text. For some examples of the possibilities, see the demos page.
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| currentElement() | Object | Returns the element that is currently highlighted. |
+| currentElementSelector() | String | Returns the selector provided for the element that is currently highlighted. |
+| getStep() | Integer | Returns the integer value of the current step (from 1 to no). |
+| getText() | String | Returns the text associated to the currently highlighted step. |
+| getTotalSteps() | Integer | Returns the total number of steps in the presentation. |
+| goToFirstStep() | - | Animates to the first step. |
+| goToNextStep() | - | Animates to the following step in the presentation. |
+| goToPreviousStep() | - | Animates to the previous step in the presentation. |
+| goToStep(n) | - | Animates directly to step n. |
+| start() | - | Starts the animation from the first step. |
+| stop() | - | Stops the current animation. |
+
+
