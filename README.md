@@ -12,7 +12,7 @@ Initially, it was a CSS-only animation for a [Snake & Ladders](https://codepen.i
 
 This is a simple 4-step way to start SpotlightJS:
 
-1. Import the JS library and CSS file into your project
+1. Download an import the JS library and CSS file into your project
 
        <link rel="stylesheet" href="/css/spotlight.css" />
        <script src="/js/spotlight.js"></script>
