@@ -4,7 +4,7 @@
 
 SpotlightJS is a JavaScript module that helps generate step-by-step instructions and demos in an easy way. It spotlights elements adding small commentary on them. [See a demo working on CodePen](https://codepen.io/alvaromontoro/full/bjQYLM/).
 
-<img src="/demos/spotlightjs-demo-480.gif?raw=true" width="480px">
+<img src="/demos/spotlight-demo-480b.gif?raw=true" width="480px">
 
 It uses borders to create a spotlight area that will highlight a specific element, displaying commentary text, and animating from one step to another using CSS transitions. It is highly customizable, works on desktop and mobile, and users can opt to use the default controls or create their own using the plugin API.
 
