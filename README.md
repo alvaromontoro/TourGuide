@@ -51,7 +51,18 @@ For more examples on how to start, check the repository demos.
 | shape | square\|round | String that indicates the shape of the spotlight: squared or round/elliptical. Default value: "round". |
 | skip | Boolean | Indicates if the link to skip the instructions will be displayed. Default: true |
 | skipText | String | Specifies the text of the link to skip instructions. Default: "Skip presentation" |
-| steps | Array | List with the selectors of the elements to be highlighted as part of the instructions. This field has no default value. **Either this parameter of `init` must be specified when starting SpotlightJS.** |
+| steps | Array | List with objects that will contain ID, text, and shape of the element to be highlighted (see more below). This field has no default value. **Either this parameter of `init` must be specified when starting SpotlightJS.** |
+
+The structure of the steps list will be as follows:
+
+    [
+      {
+        selector: "selector-of-the-element-to-be-highglighted-(mandatory)",
+        text: "text-to-be-displayed-(optional)",
+        shape: "shape-of-the-element-(optional)"
+      },
+      ...
+    ]
 
 ## API methods
 

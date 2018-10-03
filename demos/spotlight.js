@@ -27,7 +27,7 @@ var SpotlightJS = function SpotlightJS(options) {
       if (!isNaN(step) && step > -1 && step < _this.steps.length) {
         _this.spot.classList.remove("spjs-step-" + _this.current, "spjs-step-square", "spjs-step-round");
         _this.current = step;
-        var el = document.querySelector(_this.steps[step]);
+        var el = document.querySelector(_this.steps[step].selector);
         if (el) {
           var elRect = el.getBoundingClientRect();
           _this.spot.style.width = elRect.width + 20 + "px";
@@ -35,9 +35,9 @@ var SpotlightJS = function SpotlightJS(options) {
           _this.spot.style.top = (elRect.top + elRect.height/2) + "px";
           _this.spot.style.left = (elRect.left + elRect.width/2) + "px";
           _this.spot.classList.add("spjs-step-" + step); // to allow user styling specific to each step
-          _this.textContent.textContent = el.dataset.spText;
+          _this.textContent.textContent = _this.steps[step].text;
           if (_this.previousButton) _this.previousButton.style.display = _this.current == 0 ? "none" : "inline-block";
-          if (el.dataset.spShape) _this.spot.classList.add("spjs-step-" + el.dataset.spShape);
+          if (_this.steps[step].shape) _this.spot.classList.add("spjs-step-" + _this.steps[step].shape);
         }
       }
     }
@@ -72,7 +72,7 @@ var SpotlightJS = function SpotlightJS(options) {
 
   // returns the selector for the element that is being highlighted
   this.currentElementSelector = function () {
-    return _this.steps[_this.current];
+    return _this.steps[_this.current].selector;
   };
 
   // returns the DOM element that is being highlighted at the moment
@@ -82,7 +82,7 @@ var SpotlightJS = function SpotlightJS(options) {
 
   // returns the text associated to the current step
   this.getText = function () {
-    return _this.currentElement().dataset.spText;
+    return _this.steps[_this.current].text;
   };
 
   // returns the current step (1..n)
@@ -157,7 +157,12 @@ var SpotlightJS = function SpotlightJS(options) {
   if (this.init != "" && !this.hasSteps()) {
     var el = this.init;
     while (el) {
-      this.steps.push(el);
+      var elObj = document.querySelector(el);
+      this.steps.push({
+        selector: el,
+        text: elObj.dataset.spText || "",
+        shape: elObj.dataset.spShape || ""
+      });
       el = document.querySelector(el).dataset.spNext;
     }
   }

@@ -44,7 +44,12 @@ class SpotlightJS {
     if (this.init != "" && !this.hasSteps()) {
       let el = this.init;
       while (el) {
-        this.steps.push(el);
+        let elObj = document.querySelector(el);
+        this.steps.push({
+          selector: el,
+          text: elObj.dataset.spText || "",
+          shape: elObj.dataset.spShape || ""
+        });
         el = document.querySelector(el).dataset.spNext;
       }
     }
@@ -126,7 +131,7 @@ class SpotlightJS {
       if (!isNaN(step) && step > -1 && step < this.steps.length) {
         this.spot.classList.remove("spjs-step-"+this.current, "spjs-step-square", "spjs-step-round");
         this.current = step;
-        let el = document.querySelector(this.steps[step]);
+        let el = document.querySelector(this.steps[step].selector);
         if (el) {
           let elRect = el.getBoundingClientRect();
           this.spot.style.width = (elRect.width + 20) + "px";
@@ -134,11 +139,11 @@ class SpotlightJS {
           this.spot.style.top = (elRect.top + elRect.height/2) + "px";
           this.spot.style.left = (elRect.left + elRect.width/2) + "px";
           this.spot.classList.add("spjs-step-" + step); // to allow user styling specific to each step
-          this.textContent.textContent = el.dataset.spText;
+          this.textContent.textContent = this.steps[step].text;
           if (this.previousButton)
             this.previousButton.style.display = this.current == 0 ? "none" : "inline-block";
-          if (el.dataset.spShape)
-            this.spot.classList.add("spjs-step-" + el.dataset.spShape);
+          if (this.steps[step].shape)
+            this.spot.classList.add("spjs-step-" + this.steps[step].shape);
         }
       }
     }
@@ -170,13 +175,13 @@ class SpotlightJS {
   hasSteps = () => (this.init != "" && this.steps.length > 0);
 
   /** returns the identifier of the current element */
-  currentElementSelector = () => this.steps[this.current];
+  currentElementSelector = () => this.steps[this.current].selector;
 
   /** returns the currently highlighted element */
   currentElement = () => document.querySelector(this.currentElementSelector());
 
   /** returns the text of the currently highlighted element */
-  getText = () => this.currentElement().dataset.spText;
+  getText = () => this.steps[this.current].text;
 
   /** returns the current step */
   getStep = () => this.current + 1;
