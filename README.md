@@ -63,6 +63,32 @@ The structure of the steps list will be as follows:
       },
       ...
     ]
+    
+So, for example, the following ways of initializing SpolightJS would be equivalent:
+
+Method 1:
+
+    <div id="step-1" data-sp-next="#step-2" data-sp-text="This is the first step.">Hello!</div>
+    <div id="step-2" data-sp-next="#step-3" data-sp-text="This is the last steop." data-sp-shape="round">Good Bye!</div>
+    
+    <script>
+    let spotlight = new SpotlightJS({ init: "#step-1" });
+    </script>
+    
+Method 2:
+
+    <div id="step-1">Hello!</div>
+    <div id="step-2">Good Bye!</div>
+    
+    <script>
+    let spotlight = new SpotlightJS({ 
+                          steps:[
+                                  { selector: "#step-1", text: "This is the first step." },
+                                  { selector: "#step-2", text: "This is the last step.", shape: "round" }
+                                ]
+                        });
+    </script>
+		
 
 ## API methods
 
