@@ -10,11 +10,15 @@
     "build": "npm run coverage && webpack -p --config webpack.prod.config.js",
     "coverage": "karma start --single-run",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
-    "precommit": "npm run lint",
     "prepublishOnly": "npm run build",
-    "prepush": "npm run coverage",
     "start": "webpack -w --config webpack.dev.config.js",
     "test": "karma start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run coverage"
+    }
   },
   "repository": {
     "type": "git",
