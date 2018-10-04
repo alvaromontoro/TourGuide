@@ -96,7 +96,7 @@ In order to customize the instructions, you could hide all the controls (next, p
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| currentElement() | Object | Returns the element that is currently highlighted. |
+| getCurrentElement() | Object | Returns the element that is currently highlighted. |
 | currentElementSelector() | String | Returns the selector provided for the element that is currently highlighted. |
 | getStep() | Integer | Returns the integer value of the current step (from 1 to no). |
 | getText() | String | Returns the text associated to the currently highlighted step. |

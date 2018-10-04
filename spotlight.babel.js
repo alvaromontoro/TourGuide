@@ -178,7 +178,7 @@ class SpotlightJS {
   currentElementSelector = () => this.steps[this.current].selector;
 
   /** returns the currently highlighted element */
-  currentElement = () => document.querySelector(this.currentElementSelector());
+  getCurrentElement = () => document.querySelector(this.currentElementSelector());
 
   /** returns the text of the currently highlighted element */
   getText = () => this.steps[this.current].text;

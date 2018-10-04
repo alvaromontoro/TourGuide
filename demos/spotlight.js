@@ -76,7 +76,7 @@ var SpotlightJS = function SpotlightJS(options) {
   };
 
   // returns the DOM element that is being highlighted at the moment
-  this.currentElement = function () {
+  this.getCurrentElement = function () {
     return document.querySelector(_this.currentElementSelector());
   };
 
