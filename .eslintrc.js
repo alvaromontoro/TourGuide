@@ -61,9 +61,9 @@ module.exports = {
         'browser': true,
         'es6': true
     },
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 6
+    'parserOptions': {
+        'sourceType': 'module',
+        'ecmaVersion': 6
     },
     'plugins': [
         'jsx-a11y',
