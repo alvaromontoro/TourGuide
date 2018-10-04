@@ -175,10 +175,10 @@ class SpotlightJS {
   hasSteps = () => (this.init != "" && this.steps.length > 0);
 
   /** returns the identifier of the current element */
-  currentElementSelector = () => this.steps[this.current].selector;
+  getCurrentElementSelector = () => this.steps[this.current].selector;
 
   /** returns the currently highlighted element */
-  currentElement = () => document.querySelector(this.currentElementSelector());
+  getCurrentElement = () => document.querySelector(this.getCurrentElementSelector());
 
   /** returns the text of the currently highlighted element */
   getText = () => this.steps[this.current].text;

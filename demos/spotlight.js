@@ -71,13 +71,13 @@ var SpotlightJS = function SpotlightJS(options) {
   };
 
   // returns the selector for the element that is being highlighted
-  this.currentElementSelector = function () {
+  this.getCurrentElementSelector = function () {
     return _this.steps[_this.current].selector;
   };
 
   // returns the DOM element that is being highlighted at the moment
-  this.currentElement = function () {
-    return document.querySelector(_this.currentElementSelector());
+  this.getCurrentElement = function () {
+    return document.querySelector(_this.getCurrentElementSelector());
   };
 
   // returns the text associated to the current step
