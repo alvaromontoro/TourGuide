@@ -8,17 +8,29 @@ More info: https://github.com/alvaromontoro/spotlightjs
 var SpotlightJS = function SpotlightJS(options) {
   var _this = this;
 
+  this.hideSpotlight = function () {
+    _this.frame.style.display = "none";
+    var body = document.querySelector('body');
+    body.classList.remove('hideScrollY');
+  };
+  
+  this.showSpotlight = function () {
+    var body = document.querySelector('body');
+    _this.frame.style.display = "block";
+    body.classList.add('hideScrollY');
+  };
+
 	// starts the spotlight from the first step
   this.start = function () {
     if (_this.hasSteps()) {
-      _this.frame.style.display = "block";
+      _this.showSpotlight();
       _this.goToFirstStep();
     }
   };
 
   // stops the spotlight
   this.stop = function () {
-    _this.frame.style.display = "none";
+    _this.hideSpotlight();
   };
 
   // animates to the indicated step
