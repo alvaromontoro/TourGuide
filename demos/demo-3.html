@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>SpotlightJS Demo with content</title>
+		<link rel="stylesheet" href="./spotlight.css" />
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro|Titillium+Web");
+			html, body { font-size: 16px; background: #66dd77; font-family: 'Titillium Web', Arial, Verdana, sans-serif; }
+			#hello { padding: 10px; display: inline-block; background: white; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); margin-top: 30px; margin-left: 30px; cursor: pointer; }
+			#step-2 { position: relative; top: 40px; left: 10%; width: 80%; padding: 10px; background: #369; color: white; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); }
+			#step-3 { border-radius: 100%; padding: 50px; width: 200px; position: absolute; top: 250px; left: 100px; background: #632; color: white; }
+			#bye { position: absolute; right: 100px; bottom: 40px; background: red; display: inline-block; background: aquamarine; padding: 10px; }
+		</style>
+	</head>
+	<body>
+
+		<div id="hello" data-sp-next="#step-2" data-sp-text="This is the first step.">Hello! Ready to start? Click here!</div>
+		<div id="step-2" data-sp-next="#step-3" data-sp-text="Just a few more steps...">This is a small plugin that allows the  easy creation of spotlights that could be useful for small presentations, demos, or instructions.</div>
+		<div id="step-3" data-sp-next="#bye" data-sp-text="Almost there..." data-sp-shape="round">It is customizable. User can select shapes, colors, messages to be displayed...</div>
+		<div id="bye" data-sp-text="You made it till the end!">Bye! This was the end of the presentation</div>
+
+    <h1>Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper mauris purus, vitae placerat mauris egestas id. Aliquam eu ex suscipit massa bibendum iaculis. Aenean sagittis leo a sapien malesuada consequat quis non nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam luctus, arcu ut tempor tempus, eros neque tempus leo, sit amet sollicitudin massa nisl vitae magna. Suspendisse non arcu tempor, maximus massa a, ullamcorper lectus. Fusce suscipit sapien at tortor cursus mollis. In et erat vitae erat pulvinar eleifend. Quisque suscipit congue elit non fringilla. Donec dignissim eleifend lacus, sed dignissim velit luctus ac.</p>
+    <p>Etiam quis libero sodales, dignissim mauris eget, lacinia dui. Ut tincidunt laoreet sagittis. Maecenas placerat elementum augue, viverra sodales dolor vestibulum vitae. Praesent pulvinar hendrerit velit, elementum efficitur lacus accumsan vitae. Vestibulum et ante enim. Donec imperdiet lorem quis lectus rhoncus, sed malesuada nunc iaculis. Aliquam vestibulum bibendum tellus, nec ornare sapien sagittis eget. Praesent ut tellus dignissim, blandit libero at, eleifend turpis. Pellentesque in nunc lacus. Quisque ante massa, condimentum nec sem eu, porta imperdiet tortor. Sed vel mauris risus. Duis imperdiet, dolor non gravida feugiat, velit eros vehicula mauris, vitae faucibus metus massa nec neque.</p>
+    <p>Nam placerat, tellus id dictum scelerisque, nisi ex lacinia mauris, id vehicula leo massa id leo. Vestibulum consectetur enim tortor. Suspendisse eu mattis nulla. Nam ut pharetra orci. Integer aliquam felis ac eros luctus tempus. Donec ullamcorper risus eleifend nibh aliquam, et lacinia elit faucibus. Praesent imperdiet libero quis condimentum rhoncus. Suspendisse potenti. Sed vulputate arcu vitae elementum vulputate. Proin tempus ultricies rutrum. Donec malesuada vehicula convallis. Etiam eros risus, rutrum nec nulla eget, mollis porta erat. Ut volutpat, leo ac ultricies sodales, lectus nulla elementum mauris, ac porttitor sem odio vitae ipsum. Donec efficitur est vel turpis auctor semper. Aenean vel massa semper, rutrum lacus ac, egestas sem.</p>
+    <p>Curabitur nec fringilla metus, eget convallis felis. Integer egestas, nibh at pulvinar tincidunt, ex elit porttitor diam, vitae facilisis turpis velit a mi. Aenean sagittis odio vel lectus rutrum dapibus. Praesent at risus ante. Mauris scelerisque porttitor luctus. Proin pellentesque tristique nunc, non scelerisque augue faucibus id. Integer et pellentesque dolor, a porta nisi. Aliquam vitae gravida purus. Cras posuere eleifend condimentum. Vivamus vitae nulla ultrices, sollicitudin libero bibendum, vehicula lectus. Vestibulum et tempor sapien, a aliquet mi.</p>
+    <p>Aliquam tempor dui vel erat posuere ultrices. Nulla porttitor egestas turpis eu dictum. Ut cursus mi non ullamcorper egestas. Vivamus efficitur mauris dolor, et feugiat nisl maximus et. Integer convallis, purus sit amet dictum fringilla, orci odio posuere enim, ac vehicula quam nulla sit amet purus. Proin lobortis gravida massa et fermentum. Nullam posuere massa sit amet nibh feugiat vulputate. Sed efficitur ex sed ligula malesuada, a rhoncus libero viverra. Vivamus in massa at dui suscipit gravida. Nam blandit, lorem at dictum malesuada, dui felis tempus odio, eget tristique lectus lacus at orci. Integer quis tristique enim. Praesent mollis purus consequat enim aliquet, nec sodales diam lacinia. Ut et felis risus.</p>
+
+    <h1>Other Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper mauris purus, vitae placerat mauris egestas id. Aliquam eu ex suscipit massa bibendum iaculis. Aenean sagittis leo a sapien malesuada consequat quis non nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam luctus, arcu ut tempor tempus, eros neque tempus leo, sit amet sollicitudin massa nisl vitae magna. Suspendisse non arcu tempor, maximus massa a, ullamcorper lectus. Fusce suscipit sapien at tortor cursus mollis. In et erat vitae erat pulvinar eleifend. Quisque suscipit congue elit non fringilla. Donec dignissim eleifend lacus, sed dignissim velit luctus ac.</p>
+    <p>Etiam quis libero sodales, dignissim mauris eget, lacinia dui. Ut tincidunt laoreet sagittis. Maecenas placerat elementum augue, viverra sodales dolor vestibulum vitae. Praesent pulvinar hendrerit velit, elementum efficitur lacus accumsan vitae. Vestibulum et ante enim. Donec imperdiet lorem quis lectus rhoncus, sed malesuada nunc iaculis. Aliquam vestibulum bibendum tellus, nec ornare sapien sagittis eget. Praesent ut tellus dignissim, blandit libero at, eleifend turpis. Pellentesque in nunc lacus. Quisque ante massa, condimentum nec sem eu, porta imperdiet tortor. Sed vel mauris risus. Duis imperdiet, dolor non gravida feugiat, velit eros vehicula mauris, vitae faucibus metus massa nec neque.</p>
+    <p>Nam placerat, tellus id dictum scelerisque, nisi ex lacinia mauris, id vehicula leo massa id leo. Vestibulum consectetur enim tortor. Suspendisse eu mattis nulla. Nam ut pharetra orci. Integer aliquam felis ac eros luctus tempus. Donec ullamcorper risus eleifend nibh aliquam, et lacinia elit faucibus. Praesent imperdiet libero quis condimentum rhoncus. Suspendisse potenti. Sed vulputate arcu vitae elementum vulputate. Proin tempus ultricies rutrum. Donec malesuada vehicula convallis. Etiam eros risus, rutrum nec nulla eget, mollis porta erat. Ut volutpat, leo ac ultricies sodales, lectus nulla elementum mauris, ac porttitor sem odio vitae ipsum. Donec efficitur est vel turpis auctor semper. Aenean vel massa semper, rutrum lacus ac, egestas sem.</p>
+    <p>Curabitur nec fringilla metus, eget convallis felis. Integer egestas, nibh at pulvinar tincidunt, ex elit porttitor diam, vitae facilisis turpis velit a mi. Aenean sagittis odio vel lectus rutrum dapibus. Praesent at risus ante. Mauris scelerisque porttitor luctus. Proin pellentesque tristique nunc, non scelerisque augue faucibus id. Integer et pellentesque dolor, a porta nisi. Aliquam vitae gravida purus. Cras posuere eleifend condimentum. Vivamus vitae nulla ultrices, sollicitudin libero bibendum, vehicula lectus. Vestibulum et tempor sapien, a aliquet mi.</p>
+    <p>Aliquam tempor dui vel erat posuere ultrices. Nulla porttitor egestas turpis eu dictum. Ut cursus mi non ullamcorper egestas. Vivamus efficitur mauris dolor, et feugiat nisl maximus et. Integer convallis, purus sit amet dictum fringilla, orci odio posuere enim, ac vehicula quam nulla sit amet purus. Proin lobortis gravida massa et fermentum. Nullam posuere massa sit amet nibh feugiat vulputate. Sed efficitur ex sed ligula malesuada, a rhoncus libero viverra. Vivamus in massa at dui suscipit gravida. Nam blandit, lorem at dictum malesuada, dui felis tempus odio, eget tristique lectus lacus at orci. Integer quis tristique enim. Praesent mollis purus consequat enim aliquet, nec sodales diam lacinia. Ut et felis risus.</p>
+
+		<script src="./spotlight.js"></script>
+		<script>
+			// initialize the plugin to start in element #hello, squared by default, and do not show the skip to end option
+			var spotlight = new SpotlightJS({
+			  init: "#hello",
+			  shape: "square",
+			  skip: false,
+        initTrigger: true
+			});
+		</script>
+	</body>
+</html>
