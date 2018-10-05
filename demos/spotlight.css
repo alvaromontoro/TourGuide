@@ -43,3 +43,8 @@ Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlig
   color: white;
   z-index: 99999;
 }
+
+.hideScrollY {
+  height: 100%;
+  overflow-y: hidden;
+}
