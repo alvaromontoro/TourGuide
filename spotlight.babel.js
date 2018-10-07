@@ -112,17 +112,29 @@ class SpotlightJS {
     }
   }
 
+  hideSpotlight = () => {
+    this.frame.style.display = "none";
+    let body = document.querySelector('body');
+    body.classList.remove('hideScrollY');
+  }
+
+  showSpotlight = () => {
+    let body = document.querySelector('body');
+    this.frame.style.display = "block";
+    body.classList.add('hideScrollY');
+  }
+
   /** start with the first step of the instructions */
   start = () => {
     if (this.hasSteps()) {
-      this.frame.style.display = "block";
+      this.showSpotlight();
       this.goToFirstStep();
     }
   }
 
   /** end the instructions: hide everything */
   stop = () => {
-    this.frame.style.display = "none";
+    this.hideSpotlight();
   }
 
   /** go to the specified step in the instructions */
