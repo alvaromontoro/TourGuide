@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+src/
+.gitignore
+.npmignore
+index.js
+karma.conf.js
+package-lock.json
+webpack.config.js
