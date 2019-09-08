@@ -1,6 +1,6 @@
 {
   "name": "TourGuide",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS plugin that helps generate step-by-step instructions and demos in an easy way",
   "directories": {
     "example": "examples",
@@ -12,7 +12,7 @@
     "prebuild:dev": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
     "build": "webpack --output-filename tourguide.min.js --mode production",
     "build:dev": "webpack --output-filename tourguide.js --mode development",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "acorn": "^7.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-istanbul": "^5.0.1",
