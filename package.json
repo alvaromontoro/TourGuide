@@ -1,8 +1,9 @@
 {
-  "name": "TourGuide",
+  "name": "tourguide",
   "version": "0.0.2",
   "description": "JS plugin that helps generate step-by-step instructions and demos in an easy way",
   "directories": {
+    "doc": "docs",
     "example": "examples",
     "test": "tests"
   },
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:alvaromontoro/tourguide.git"
+    "url": "git+ssh://git@github.com/alvaromontoro/tourguide.git"
   },
   "keywords": [
     "tourguide",
@@ -56,5 +57,8 @@
     "nodemon": "^1.19.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
+  },
+  "bugs": {
+    "url": "https://github.com/alvaromontoro/tourguide/issues"
   }
 }

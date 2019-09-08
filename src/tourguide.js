@@ -228,7 +228,7 @@ export class TourGuide {
   getStep = () => this.current + 1;
 
   /** returns the total number of steps */
-  getTotalSteps = () => this.steps.length + 1;
+  getTotalSteps = () => this.steps.length;
 }
 
 export default TourGuide;
