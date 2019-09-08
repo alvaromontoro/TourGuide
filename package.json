@@ -1,31 +1,28 @@
 {
-  "name": "spotlightjs",
+  "name": "TourGuide",
   "version": "0.0.1",
   "description": "JS plugin that helps generate step-by-step instructions and demos in an easy way",
   "directories": {
-    "example": "demos"
+    "example": "examples",
+    "test": "tests"
   },
   "main": "index.js",
   "scripts": {
-    "build": "npm run coverage && webpack -p --config webpack.prod.config.js",
-    "coverage": "karma start --single-run",
-    "lint": "./node_modules/.bin/eslint src/**/*.js",
-    "prepublishOnly": "npm run build",
-    "start": "webpack -w --config webpack.dev.config.js",
-    "test": "karma start"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run coverage"
-    }
+    "prebuild": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
+    "prebuild:dev": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
+    "build": "webpack --output-filename tourguide.min.js --mode production",
+    "build:dev": "webpack --output-filename tourguide.js --mode development",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:alvaromontoro/spotlightjs.git"
+    "url": "git@github.com:alvaromontoro/tourguide.git"
   },
   "keywords": [
+    "tourguide",
+    "guided tour",
     "spotlight",
+    "tutorial",
     "javascript",
     "js",
     "html",
@@ -37,8 +34,8 @@
     "step-by-step"
   ],
   "author": "Alvaro Montoro",
-  "license": "GPL-3.0-or-later",
-  "homepage": "https://github.com/alvaromontoro/spotlightjs",
+  "license": "MIT",
+  "homepage": "https://github.com/alvaromontoro/tourguide",
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -46,43 +43,17 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-istanbul": "^5.0.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-polyfill": "^6.26.0",
-    "clean-css-loader": "^1.1.0",
-    "clean-webpack-plugin": "^0.1.17",
-    "css-loader": "^1.0.0",
-    "css-mqpacker": "^7.0.0",
     "eslint": "^5.6.1",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "husky": "^1.1.0",
-    "jasmine-core": "^3.2.1",
-    "karma": "^3.0.0",
-    "karma-babel-preprocessor": "^8.0.0-beta.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-coverage": "^1.1.1",
-    "karma-htmlfile-reporter": "^0.3.4",
-    "karma-jasmine": "^1.1.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.32",
-    "karma-threshold-reporter": "^0.1.15",
-    "karma-webpack": "^4.0.0-beta.0",
-    "node-sass": "^4.7.2",
-    "postcss-loader": "^3.0.0",
-    "postcss-pxtorem": "^4.0.1",
-    "require": "^2.4.20",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "template-string-optimize-loader": "^3.0.0",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.1.1"
+    "jest": "^24.9.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }
