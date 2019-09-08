@@ -2,7 +2,7 @@
 TourGuide: a highlighting/instructions plugin for JS.
 Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlightjs
 **/
-export class TourGuide {
+export default class TourGuide {
   constructor(options) {
     this.init = '';
     this.shape = 'round';
