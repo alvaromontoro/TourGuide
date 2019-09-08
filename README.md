@@ -1,4 +1,8 @@
-# TourGuide
+# TourGuide 
+
+[![Build Status](https://travis-ci.org/alvaromontoro/spotlightjs.svg?branch=master)](https://travis-ci.org/alvaromontoro/spotlightjs) 
+[![npm](https://img.shields.io/npm/v/tourguide.svg)](https://www.npmjs.com/package/tourguide) 
+[![npm](https://img.shields.io/npm/l/tourguide.svg)](https://www.npmjs.com/package/tourguide)
 
 ## About
 
@@ -14,10 +18,20 @@ Initially, it was a CSS-only animation for a [Snake & Ladders](https://codepen.i
 
 This is a simple 4-step way to start TourGuide:
 
-1. Download an import the JS library and CSS file into your project
+1. Download an import the JS library and CSS file into your project. You can do this by:
+  
+      1. Downloading/importing the files directly into your project:
 
-    <link rel="stylesheet" href="/css/tourguide.css" />
-    <script src="/js/tourguide.js"></script>
+        <link rel="stylesheet" href="/css/tourguide.css" />
+        <script src="/js/tourguide.js"></script>
+    
+      2. Installing the package from npm
+  
+        npm i tourguide
+  
+      3. Adding the package from yarn
+  
+        yarn add tourguide
 
 2) Add `data-sp-next` data-attribute to the elements that you want to highlight as part of your instructions.
 
@@ -25,11 +39,11 @@ This is a simple 4-step way to start TourGuide:
 
 3) Initialize TourGuide with the selector of the initial element of the instructions:
 
-     <script>
-     let tour = new TourGuide({
-       init: "#step1"
-     });
-     </script>
+         <script>
+         let tour = new TourGuide({
+           init: "#step1"
+         });
+         </script>
 
 4) With JavaScript, trigger the beginning of the instructions/demo using the `start` method:
 
@@ -106,3 +120,10 @@ In order to customize the instructions, you could hide all the controls (next, p
 | goToStep(n)                 | -       | Animates directly to step n.                                                 |
 | start()                     | -       | Starts the animation from the first step.                                    |
 | stop()                      | -       | Stops the current animation.                                                 |
+
+
+## Browser Support
+
+| ![Edge Logo 32x32](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/56.3.2/edge/edge_32x32.png)<br>IE/Edge | ![Firefox Logo](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/56.3.2/archive/firefox_23-56/firefox_23-56_32x32.png)<br>Firefox | ![Chrome](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/56.3.2/archive/chrome_12-48/chrome_12-48_32x32.png)<br>Chrome | ![Safari Logo](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/56.3.2/archive/safari_1-7/safari_1-7_32x32.png)<br>Safari | ![Opera logo](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/56.3.2/opera/opera_32x32.png)<br>Opera |
+| ---- | ------- | ------ | ------ | ----- |
+|  9+  |   12+   |   4+   |   4+   | 11.5+ |
