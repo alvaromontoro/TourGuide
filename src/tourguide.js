@@ -2,7 +2,7 @@
 TourGuide: a highlighting/instructions plugin for JS.
 Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/TourGuide
 **/
-export default class TourGuide {
+export class TourGuide {
   constructor(options) {
     this.init = '';
     this.shape = 'round';
@@ -230,3 +230,5 @@ export default class TourGuide {
   /** returns the total number of steps */
   getTotalSteps = () => this.steps.length + 1;
 }
+
+export default TourGuide;
