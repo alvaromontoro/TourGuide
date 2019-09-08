@@ -1,6 +1,6 @@
 /**
 TourGuide: a highlighting/instructions plugin for JS.
-Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/spotlightjs
+Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/TourGuide
 **/
 export default class TourGuide {
   constructor(options) {
