@@ -1,6 +1,6 @@
 {
   "name": "tourguide",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JS plugin that helps generate step-by-step instructions and demos in an easy way",
   "directories": {
     "doc": "docs",
