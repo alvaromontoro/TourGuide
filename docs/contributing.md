@@ -27,5 +27,7 @@ The process should be pretty standard:
 7. Push your changes.
 8. Create a pull request.
 
-Notice that **all code will be reviewed** and it may or may not be accepted. 
-We will allways leave a comment (and feedback) whatever the case is.
+Notice that **all code will be reviewed** before it is accepted and merged. 
+We will allways leave a comment (and feedback) whatever the case is. 
+Please limit the pull request to the issue, and make small commits instead of 
+large ones that affect thousands of lines of code.
