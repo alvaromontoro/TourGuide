@@ -6,13 +6,13 @@
 
 ## About
 
-TourGuide is a JavaScript module that helps generate step-by-step instructions and demos in an easy way. It spotlights elements adding small commentary on them. [See a demo working on CodePen](https://codepen.io/alvaromontoro/full/bjQYLM/).
+TourGuide is a JavaScript module that helps generate step-by-step instructions and demos in an easy way. It spotlights elements adding small commentary on them. [See a demo working on CodePen](https://codepen.io/alvaromontoro/full/WNeKwRK).
 
 <img src="/public/spotlight-demo-480b.gif?raw=true" width="480px">
 
-It uses borders to create a spotlight area that will highlight a specific element, displaying commentary text, and animating from one step to another using CSS transitions. It is highly customizable, works on desktop and mobile, and users can opt to use the default controls or create their own using the plugin API.
+It uses borders and box-shadows to create a spotlight area that will highlight a specific element, displaying commentary text, and animating from one step to another using CSS transitions. It is highly customizable, works on desktop and mobile, and users can opt to use the default controls or create their own using the plugin API.
 
-Initially, it was a CSS-only animation for a [Snake & Ladders](https://codepen.io/alvaromontoro/full/gjWPNW/) (a.k.a. as Chutes & Ladders) game. Then it was ported into JavaScript and this module was created.
+Initially, it was a CSS-only animation for a [Snake & Ladders](https://codepen.io/alvaromontoro/full/gjWPNW/) game. Then it was ported into JavaScript and this module was created.
 
 ## How to use it
 
@@ -22,19 +22,16 @@ This is a simple 4-step way to start TourGuide:
 
     1. Downloading/importing the files directly into your project:
 
-
-        <link rel="stylesheet" href="/css/tourguide.css" />
-        <script src="/js/tourguide.js"></script>
+           <link rel="stylesheet" href="/css/tourguide.css" />
+           <script src="/js/tourguide.js"></script>
 
     2. Installing the package from npm
 
-
-        npm i tourguide
+           npm i tourguide
 
     3. Adding the package from yarn
 
-
-        yarn add tourguide
+           yarn add tourguide
 
 2.  Add `data-sp-next` data-attribute to the elements that you want to highlight as part of your instructions.
 
