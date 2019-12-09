@@ -1,6 +1,6 @@
 {
   "name": "tourguide",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JS plugin that helps generate step-by-step instructions and demos in an easy way",
   "directories": {
     "doc": "docs",
@@ -39,12 +39,12 @@
   "homepage": "https://github.com/alvaromontoro/tourguide",
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "acorn": "^7.0.0",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "acorn": "^7.1.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-istanbul": "^5.0.1",
@@ -53,10 +53,10 @@
     "eslint": "^5.6.1",
     "eslint-loader": "^2.1.1",
     "jest": "^24.9.0",
-    "node-sass": "^4.12.0",
-    "nodemon": "^1.19.1",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "bugs": {
     "url": "https://github.com/alvaromontoro/tourguide/issues"

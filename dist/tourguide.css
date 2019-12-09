@@ -10,43 +10,34 @@ Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/TourGui
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.01);
-}
-#spjs-frame #spjs-spot {
-  position: absolute;
-  border-radius: 100%;
-  box-shadow: inset 0 0 8px 0;
-  border: 9999vmin solid;
-  color: rgba(0, 0, 0, 0.5);
-  transition: all 0.5s;
-  transform: translate(-50%, -50%);
-}
-#spjs-frame #spjs-spot.spjs-square,
-#spjs-frame #spjs-spot.spjs-step-square {
-  border-radius: 5px;
-  border-radius: calc(200vmin + 5px);
-}
-#spjs-frame #spjs-spot.spjs-step-round {
-  border-radius: 100%;
-}
-#spjs-frame #spjs-spot #spjs-text {
-  position: absolute;
-  top: 100%;
-  color: white;
-}
-#spjs-frame #spjs-spot span {
-  padding-right: 5px;
-}
-#spjs-frame #spjs-skip {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  color: white;
-  z-index: 99999;
-}
+  background: rgba(0, 0, 0, 0.01); }
+  #spjs-frame #spjs-spot {
+    position: absolute;
+    border-radius: 100%;
+    box-shadow: inset 0 0 8px 0;
+    border: 400vmin solid;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+    transform: translate(-50%, -50%); }
+    #spjs-frame #spjs-spot.spjs-square, #spjs-frame #spjs-spot.spjs-step-square {
+      border-radius: 5px;
+      border-radius: calc(200vmin + 5px); }
+    #spjs-frame #spjs-spot.spjs-step-round {
+      border-radius: 100%; }
+    #spjs-frame #spjs-spot #spjs-text {
+      position: absolute;
+      top: 100%;
+      color: white; }
+    #spjs-frame #spjs-spot span {
+      padding-right: 5px; }
+  #spjs-frame #spjs-skip {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    z-index: 99999; }
 
 .hideScrollY {
   height: 100%;
   margin-right: 15px;
-  overflow-y: hidden;
-}
+  overflow-y: hidden; }

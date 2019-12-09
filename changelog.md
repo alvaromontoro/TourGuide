@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.0.4] - 2019-12-08
+
+### Added
+
+- Bug fixes for IE11
+
+### Updated
+
+- Fix dependency versions
+
 ## [v0.0.3] - 2019-09-08
 
 ### Added
