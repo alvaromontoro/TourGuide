@@ -7,12 +7,20 @@
     "example": "examples",
     "test": "tests"
   },
-  "main": "index.js",
+  "files": [
+    "dist/tourguide.css",
+    "dist/tourguide.js",
+    "dist/tourguide.min.js"
+  ],
+  "main": "dist/tourguide.min.js",
   "scripts": {
-    "prebuild": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
-    "prebuild:dev": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
     "build": "webpack --output-filename tourguide.min.js --mode production",
     "build:dev": "webpack --output-filename tourguide.js --mode development",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "./node_modules/.bin/tslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "prebuild": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
+    "prebuild:dev": "node-sass --include-path scss src/tourguide.scss dist/tourguide.css",
+    "start": "NODE_ENV=development webpack-dev-server",
     "test": "jest --coverage"
   },
   "repository": {
@@ -63,7 +71,8 @@
     "ts-loader": "^8.0.5",
     "tslint": "^6.1.3",
     "webpack": "^5.1.3",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "bugs": {
     "url": "https://github.com/alvaromontoro/tourguide/issues"
