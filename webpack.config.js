@@ -12,10 +12,16 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
-    modules: [path.resolve(), path.resolve('./src'), 'node_modules']
+    modules: [path.resolve(), path.resolve('./src'), 'node_modules'],
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [
+      {
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+        test: /\.tsx?$/
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components|coverage)/,
@@ -30,5 +36,9 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [],
+  devServer: {
+    contentBase: [path.join(__dirname, 'examples'), path.join(__dirname, 'dist')],
+    port: '8000'
+  }
 };
