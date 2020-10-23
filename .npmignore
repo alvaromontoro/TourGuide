@@ -1,0 +1,14 @@
+.github/
+coverage/
+docs/
+examples/
+node_modules/
+public/
+tests/
+.babelrc
+.editorconfig
+.gitignore
+.npmignore
+.travis.yml
+package-lock.json
+webpack.config.js
