@@ -1,14 +1,15 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const name = 'tourguide';
 
 module.exports = {
   name: name,
-  entry: [`./src/${name}.js`],
+  entry: [`./src/${name}.ts`],
   output: {
     filename: `${name}.js`,
     library: 'TourGuide',
-    libraryTarget: 'umd',
     libraryExport: 'TourGuide',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -23,20 +24,26 @@ module.exports = {
         test: /\.tsx?$/
       },
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components|coverage)/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              presets: ['@babel/preset-env']
+              hmr: process.env.NODE_ENV === 'development'
             }
-          }
+          },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ]
       }
     ]
   },
-  plugins: [],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `tourguide.css`
+    })
+  ],
   devServer: {
     contentBase: [path.join(__dirname, 'examples'), path.join(__dirname, 'dist')],
     port: '8000'
