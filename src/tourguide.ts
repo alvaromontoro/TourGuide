@@ -2,7 +2,37 @@
 TourGuide: a highlighting/instructions plugin for JS.
 Developed by Alvaro Montoro. More info: https://github.com/alvaromontoro/TourGuide
 **/
-export class TourGuide {
+import './tourguide.scss';
+
+interface Options {
+  color?: string;
+  current?: number;
+  frame?: HTMLDivElement | null;
+  init: string;
+  initTrigger?: boolean;
+  next?: boolean;
+  nextButton?: HTMLButtonElement | null;
+  nextText?: string;
+  previous?: boolean;
+  previousButton?: HTMLButtonElement | null;
+  previousText?: string;
+  shape?: string;
+  skip?: boolean;
+  skipText?: string;
+  spot?: HTMLDivElement | null;
+  steps?: Steps[];
+  text?: HTMLDivElement | null;
+  textContent?: HTMLSpanElement | null | string;
+  timer?: number;
+}
+
+interface Steps {
+  selector: string;
+  shape: string;
+  text: string;
+}
+
+export default class TourGuide {
   constructor(options) {
     this.init = '';
     this.shape = 'round';
@@ -124,10 +154,10 @@ export class TourGuide {
 
     // if window is resized of scrolled, recalculate
     let $this = this;
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       $this.goToStep($this.current);
     });
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       $this.goToStep($this.current);
     });
 
@@ -230,5 +260,3 @@ export class TourGuide {
   /** returns the total number of steps */
   getTotalSteps = () => this.steps.length;
 }
-
-export default TourGuide;
