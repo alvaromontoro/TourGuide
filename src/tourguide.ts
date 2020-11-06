@@ -32,7 +32,7 @@ interface Steps {
   text: string;
 }
 
-export default class TourGuide {
+export class TourGuide {
   defaultOptions: Options = {
     color: 'rgba(0,0,0,0.4)',
     current: 0,
@@ -247,3 +247,5 @@ export default class TourGuide {
   /** returns the total number of steps */
   getTotalSteps = () => this.options.steps!.length;
 }
+
+export default TourGuide;
