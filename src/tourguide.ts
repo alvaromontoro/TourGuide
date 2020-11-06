@@ -33,82 +33,58 @@ interface Steps {
 }
 
 export default class TourGuide {
-  constructor(options) {
-    this.init = '';
-    this.shape = 'round';
-    this.color = 'rgba(0,0,0,0.4)';
-    this.skip = true;
-    this.skipText = 'Skip presentation';
-    this.previous = true;
-    this.previousText = 'Previous';
-    this.next = true;
-    this.nextText = 'Next';
-    this.timer = 0;
-    this.current = 0;
-    this.steps = [];
-    this.initTrigger = false;
-    this.frame = null;
-    this.spot = null;
-    this.text = null;
-    this.textContent = null;
-    this.previousButton = null;
-    this.nextButton = null;
+  defaultOptions: Options = {
+    color: 'rgba(0,0,0,0.4)',
+    current: 0,
+    frame: null,
+    init: '',
+    initTrigger: false,
+    next: true,
+    nextText: 'Next',
+    previous: true,
+    previousText: 'Previous',
+    nextButton: null,
+    previousButton: null,
+    shape: 'round',
+    skip: true,
+    skipText: 'Skip presentation',
+    spot: null,
+    steps: [],
+    text: null,
+    textContent: null,
+    timer: 0
+  };
+  options: Options;
 
-    // extend the options that can be customized
-    if (options) {
-      if (options.init) {
-        this.init = options.init;
-      }
-      if (options.shape) {
-        this.shape = options.shape == 'square' ? 'square' : 'round';
-      }
-      if (options.hasOwnProperty('skip')) {
-        this.skip = options.skip == true;
-      }
-      if (options.hasOwnProperty('previous')) {
-        this.previous = options.previous == true;
-      }
-      if (options.hasOwnProperty('next')) {
-        this.next = options.next == true;
-      }
-      if (options.hasOwnProperty('initTrigger')) {
-        this.initTrigger = options.initTrigger == true;
-      }
-      if (options.skipText) {
-        this.skipText = options.skipText;
-      }
-      if (options.previousText) {
-        this.previousText = options.previousText;
-      }
-      if (options.nextText) {
-        this.nextText = options.nextText;
-      }
-      if (options.steps) {
-        this.steps = options.steps;
-      }
-      if (options.color) {
-        this.color = options.color;
-      }
-    }
+  constructor(options: Options) {
+    this.options = {
+      ...this.defaultOptions,
+      ...options
+    };
 
     // create a list of selectors for the elements to get the spotlight (if none exists yet)
-    if (this.init != '' && !this.hasSteps()) {
-      let el = this.init;
-      while (el) {
-        let elObj = document.querySelector(el);
-        this.steps.push({
-          selector: el,
-          text: elObj.dataset.spText || '',
-          shape: elObj.dataset.spShape || ''
-        });
-        el = document.querySelector(el).dataset.spNext;
+    if (this.options.init !== '' && !this.hasSteps()) {
+      let element = this.options.init;
+
+      while (element) {
+        const elementObj = document.querySelector(element);
+
+        if (elementObj instanceof HTMLElement) {
+          this.options.steps?.push({
+            selector: element,
+            shape: elementObj!.dataset.spShape || '',
+            text: elementObj!.dataset.spText || ''
+          });
+
+          element = elementObj.dataset.spNext!;
+        }
       }
     }
 
     // remove html structure if already existing
     let oldSpInst = document.querySelector('#spjs-frame');
     if (oldSpInst) {
-      document.querySelector('body').removeChild(oldSpInst);
+      document.querySelector('body')!.removeChild(oldSpInst);
     }
 
     // create the html structure needed for the spotlight
@@ -116,66 +92,71 @@ export default class TourGuide {
     spInst.id = 'spjs-frame';
     let spSpot = document.createElement('div');
     spSpot.id = 'spjs-spot';
-    spSpot.classList.add('spjs-' + this.shape);
-    spSpot.style.color = this.color;
+    spSpot.classList.add('spjs-' + this.options.shape);
+    spSpot.style.color = this.options.color!;
     let spText = document.createElement('div');
     spText.id = 'spjs-text';
     let spTextContent = document.createElement('span');
     spTextContent.id = 'spjs-textContent';
     spText.appendChild(spTextContent);
-    if (this.skip) {
+
+    if (this.options.skip) {
       let spSkip = document.createElement('span');
-      spSkip.innerHTML = this.skipText;
+      spSkip.innerHTML = this.options.skipText!;
       spSkip.id = 'spjs-skip';
       spSkip.addEventListener('click', this.stop);
       spInst.appendChild(spSkip);
     }
-    if (this.previous) {
-      let spPrev = document.createElement('span');
-      spPrev.innerHTML = this.previousText;
+
+    if (this.options.previous) {
+      let spPrev = document.createElement('button');
+      spPrev.innerHTML = this.options.previousText!;
       spPrev.addEventListener('click', this.goToPreviousStep);
       spText.appendChild(spPrev);
-      this.previousButton = spPrev;
+      this.options.previousButton = spPrev;
     }
-    if (this.next) {
-      let spNext = document.createElement('span');
-      spNext.innerHTML = this.nextText;
+
+    if (this.options.next) {
+      let spNext = document.createElement('button');
+      spNext.innerHTML = this.options.nextText!;
       spNext.addEventListener('click', this.goToNextStep);
       spText.appendChild(spNext);
-      this.nextButton = spNext;
+      this.options.nextButton = spNext;
     }
+
     spSpot.appendChild(spText);
     spInst.appendChild(spSpot);
-    document.querySelector('body').appendChild(spInst);
-    this.frame = spInst;
-    this.spot = spSpot;
-    this.text = spText;
-    this.textContent = spTextContent;
+    document.querySelector('body')!.appendChild(spInst);
+
+    this.options.frame = spInst;
+    this.options.spot! = spSpot;
+    this.options.text = spText;
+    this.options.textContent = spTextContent;
 
     // if window is resized of scrolled, recalculate
     let $this = this;
     window.addEventListener('resize', function () {
-      $this.goToStep($this.current);
+      $this.goToStep($this.options.current!);
     });
     window.addEventListener('scroll', function () {
-      $this.goToStep($this.current);
+      $this.goToStep($this.options.current!);
     });
 
     // make the plugin initialize automatically on click of first element
-    if (this.initTrigger) {
-      document.querySelector(this.init).addEventListener('click', this.start);
+    if (this.options.initTrigger) {
+      document.querySelector(this.options.init)!.addEventListener('click', this.start);
     }
   }
 
   hideSpotlight = () => {
-    this.frame.style.display = 'none';
-    let body = document.querySelector('body');
+    this.options.frame!.style.display = 'none';
+    let body = document.querySelector('body')!;
     body.classList.remove('hideScrollY');
   };
 
   showSpotlight = () => {
-    let body = document.querySelector('body');
-    this.frame.style.display = 'block';
+    let body = document.querySelector('body')!;
+    this.options.frame!.style.display = 'block';
     body.classList.add('hideScrollY');
   };
 
@@ -193,28 +174,34 @@ export default class TourGuide {
   };
 
   /** go to the specified step in the instructions */
-  goToStep = step => {
+  goToStep = (step: number) => {
     if (this.hasSteps()) {
-      if (!isNaN(step) && step > -1 && step < this.steps.length) {
-        this.spot.classList.remove(
-          'spjs-step-' + this.current,
+      if (!isNaN(step) && step > -1 && step < this.options.steps?.length!) {
+        this.options.spot!.classList.remove(
+          'spjs-step-' + this.options.current,
           'spjs-step-square',
           'spjs-step-round'
         );
-        this.current = step;
-        let el = document.querySelector(this.steps[step].selector);
+        this.options.current = step;
+        let el = document.querySelector(this.options.steps![step].selector);
+
         if (el) {
           let elRect = el.getBoundingClientRect();
-          this.spot.style.width = elRect.width + 20 + 'px';
-          this.spot.style.height = elRect.height + 20 + 'px';
-          this.spot.style.top = elRect.top + elRect.height / 2 + 'px';
-          this.spot.style.left = elRect.left + elRect.width / 2 + 'px';
-          this.spot.classList.add('spjs-step-' + step); // to allow user styling specific to each step
-          this.textContent.textContent = this.steps[step].text;
-          if (this.previousButton)
-            this.previousButton.style.display = this.current == 0 ? 'none' : 'inline-block';
-          if (this.steps[step].shape)
-            this.spot.classList.add('spjs-step-' + this.steps[step].shape);
+          this.options.spot!.style.width = elRect.width + 20 + 'px';
+          this.options.spot!.style.height = elRect.height + 20 + 'px';
+          this.options.spot!.style.top = elRect.top + elRect.height / 2 + 'px';
+          this.options.spot!.style.left = elRect.left + elRect.width / 2 + 'px';
+          this.options.spot!.classList.add('spjs-step-' + step); // to allow user styling specific to each step
+          this.options.textContent = this.options.steps![step].text;
+
+          if (this.options.previousButton) {
+            this.options.previousButton.style.display =
+              this.options.current == 0 ? 'none' : 'inline-block';
+          }
+
+          if (this.options.steps![step].shape) {
+            this.options.spot!.classList.add('spjs-step-' + this.options.steps![step].shape);
+          }
         }
       }
     }
@@ -227,36 +214,36 @@ export default class TourGuide {
 
   /** go to the next step of the instructions */
   goToNextStep = () => {
-    if (this.current == this.steps.length - 1) {
+    if (this.options.current == this.options.steps!.length - 1) {
       this.stop();
     }
-    if (this.current < this.steps.length) {
-      this.goToStep(this.current + 1);
+    if (this.options.current! < this.options.steps!.length) {
+      this.goToStep(this.options.current! + 1);
     }
   };
 
   /** go to the next step of the instructions */
   goToPreviousStep = () => {
-    if (this.current > 0) {
-      this.goToStep(this.current - 1);
+    if (this.options.current! > 0) {
+      this.goToStep(this.options.current! - 1);
     }
   };
 
   /** indicates if the instructions have any steps to show (as a whole) */
-  hasSteps = () => this.init != '' && this.steps.length > 0;
+  hasSteps = () => this.options.init != '' && this.options.steps!.length > 0;
 
   /** returns the identifier of the current element */
-  getCurrentElementSelector = () => this.steps[this.current].selector;
+  getCurrentElementSelector = () => this.options.steps![this.options.current!].selector;
 
   /** returns the currently highlighted element */
   getCurrentElement = () => document.querySelector(this.getCurrentElementSelector());
 
   /** returns the text of the currently highlighted element */
-  getText = () => this.steps[this.current].text;
+  getText = () => this.options.steps![this.options.current!].text;
 
   /** returns the current step */
-  getStep = () => this.current + 1;
+  getStep = () => this.options.current! + 1;
 
   /** returns the total number of steps */
-  getTotalSteps = () => this.steps.length;
+  getTotalSteps = () => this.options.steps!.length;
 }
