@@ -53,7 +53,7 @@
     "eslint": "^5.6.1",
     "eslint-loader": "^2.1.1",
     "jest": "^26.2.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
